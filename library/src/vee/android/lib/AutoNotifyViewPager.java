@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2011 The Android Open Source Project
+ * Copyright (C) 2014 VenomVendor <info@VenomVendor.com>.
+ * Copyright (C) 2011 The Android Open Source Project.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,6 +31,13 @@ import android.os.Parcelable;
 import android.os.SystemClock;
 import android.support.v4.os.ParcelableCompat;
 import android.support.v4.os.ParcelableCompatCreatorCallbacks;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.KeyEventCompat;
+import android.support.v4.view.MotionEventCompat;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.VelocityTrackerCompat;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewConfigurationCompat;
 import android.support.v4.view.accessibility.AccessibilityEventCompat;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v4.view.accessibility.AccessibilityRecordCompat;
@@ -81,6 +89,8 @@ import java.util.Comparator;
  * {@sample development/samples/Support13Demos/src/com/example/android/supportv13/app/ActionBarTabsPager.java
  *      complete}
  */
+
+@SuppressWarnings("unused")
 public class AutoNotifyViewPager extends ViewGroup {
     private static final String TAG = "ViewPager";
     private static final boolean DEBUG = false;
@@ -959,12 +969,31 @@ public class AutoNotifyViewPager extends ViewGroup {
             } catch (Resources.NotFoundException e) {
                 resName = Integer.toHexString(getId());
             }
-            throw new IllegalStateException("The application's PagerAdapter changed the adapter's" +
-                    " contents without calling PagerAdapter#notifyDataSetChanged!" +
+            Log.e(VIEW_LOG_TAG,  "---------------------------------------\n" +
+                    " The application's PagerAdapter changed the adapter's content." +
                     " Expected adapter item count: " + mExpectedAdapterCount + ", found: " + N +
                     " Pager id: " + resName +
                     " Pager class: " + getClass() +
-                    " Problematic adapter: " + mAdapter.getClass());
+                    " Problematic adapter: " + mAdapter.getClass() +
+                    " \nTrying to \"AutoNotify\" PagerAdapter#notifyDataSetChanged!" +
+                    " \n---------------------------------------");
+
+            mAdapter.notifyDataSetChanged();
+
+            if (N != mExpectedAdapterCount) {
+                throw new IllegalStateException(
+                        "---------------------------------------\n" +
+                        "Failed to \"AutoNotify\" PagerAdapter#notifyDataSetChanged \n" +
+                        "The application's PagerAdapter changed the adapter's" +
+                        " contents without calling PagerAdapter#notifyDataSetChanged!" +
+                        " Expected adapter item count: " + mExpectedAdapterCount + ", found: " + N +
+                        " Pager id: " + resName +
+                        " Pager class: " + getClass() +
+                        " Problematic adapter: " + mAdapter.getClass() +
+                        "\n---------------------------------------");
+            }else {
+                Log.i(VIEW_LOG_TAG,  mAdapter.getClass()+ "'s notifyDataSetChanged(); Notified Successfully");
+            }
         }
 
         // Locate the currently focused item or add it if needed.
