@@ -7,7 +7,7 @@ This project is an upgraded version of [ViewPager][1]. AutoNotifies your adapter
 
 
 ## Why?
- - By default **ViewPager's** `adapter` should be notified using <kbd>mAdapter.notifyDataSetChanged()</kbd> if *data* get's changed after [setting adapter][2] to avoid *IllegalStateException*
+ - By default **ViewPager's** `adapter` should be notified using <kbd>mAdapter.notifyDataSetChanged()</kbd> if *data* get's changed after [setting adapter][2] to avoid *[IllegalStateException][6]*
  - It get's difficult to update your adapter when `PagerAdapter` is in other class, typically different <kbd>*.java</kbd>
  - <u>**Example**</u>  :
    - In [this app][3], `ListView's adapter` & `ViewPager's adapter` share's **same content**.
@@ -73,3 +73,4 @@ Instead of <s>`ViewPager mPager`</s> use <kbd>AutoNotifyViewPager mPager</kbd>
  [3]: https://play.google.com/store/apps/details?id=com.MobiGyaan "MobiGyaan"
  [4]: https://github.com/VenomVendor/AutoNotifyViewPager/tree/master/library "Import"
  [5]: https://github.com/VenomVendor/AutoNotifyViewPager/tree/master/library/bin "any one"
+ [6]: https://www.google.com/search?q=the+application's+pageradapter+changed "IllegalStateException"
