@@ -1,5 +1,5 @@
 
-package vee.android.sample.AutoNotifyViewPager;
+package com.venomvendor.sample.AutoNotifyViewPager;
 
 import com.venomvendor.library.AutoNotifyViewPager;
 import com.venomvendor.library.AutoNotifyViewPager.OnPageChangeListener;
@@ -43,7 +43,6 @@ public class MainActivity extends FragmentActivity {
 		// Set up the ViewPager with the sections adapter.
 		mPager = (AutoNotifyViewPager) findViewById(R.id.pager);
 		mPager.setAdapter(mSectionsPagerAdapter);
-		String x = AutoNotifyViewPager.LAST_COMMIT_HASH;
 
 		// Optional
 		// AutoNotifyViewPager.OnPageChangeListener
@@ -155,7 +154,6 @@ public class MainActivity extends FragmentActivity {
 		public PlaceholderFragment() {
 		}
 
-		@SuppressLint("NewApi")
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_main, container, false);
