@@ -7,7 +7,7 @@ This project is an upgraded version of [ViewPager][1]. AutoNotifies your adapter
 
 
 ## Why?
- - By default **ViewPager's** `adapter` should be notified using <kbd>mAdapter.notifyDataSetChanged()</kbd> if *data* get's changed after [setting adapter][2] to avoid *[IllegalStateException][6]*
+ - By default **ViewPager's** `adapter` should be notified using <kbd>mAdapter.notifyDataSetChanged()</kbd> if *data* get's changed after [setting adapter][2] to avoid *[IllegalStateException][5]*
  - It get's difficult to update your adapter when `PagerAdapter` is in other class, typically different <kbd>*.java</kbd>
  - <u>**Example**</u>  :
    - In [this app][3], `ListView's adapter` & `ViewPager's adapter` share's **same content**.
@@ -24,11 +24,11 @@ This project is an upgraded version of [ViewPager][1]. AutoNotifies your adapter
 
 ## Usage
 
-Import [library][4]  or add any one [*.jar][5] into `/libs`
+Import any one [*.jar][4] into `/libs`
 
 In `layout.xml`
 
-	<vee.android.lib.AutoNotifyViewPager 
+	<com.venomvendor.library.AutoNotifyViewPager 
 		android:id="@+id/pager"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent" />
@@ -40,19 +40,19 @@ Instead of <s>`ViewPager mPager`</s> use <kbd>AutoNotifyViewPager mPager</kbd>
 	mPager.setAdapter(adapter);
 
 ### imports
-	import vee.android.lib.AutoNotifyViewPager.*;
+	import com.venomvendor.library.AutoNotifyViewPager.*;
 
 ### *<u>imports not to have</u>*
 	import android.support.v4.view.ViewPager.*
 
 ### ProGuard
-	-dontwarn vee.android.lib.**
-	-keep public class vee.android.lib.** { *; }
+	-dontwarn com.venomvendor.library.AutoNotifyViewPager.**
+	-keep public class com.venomvendor.library.AutoNotifyViewPager.** { *; }
 
 ###### Author : [VenomVendor](https://www.google.com/#newwindow=1&q=VenomVendor "Find me on Google")
 
 #License
-	Copyright (C) 2014 VenomVendor <info@VenomVendor.com>
+	Copyright (C) 2015 VenomVendor <info@VenomVendor.com>
 	Copyright (C) 2011 The Android Open Source Project.
 
 	Licensed under the Apache License, Version 2.0 (the "License");
@@ -71,6 +71,5 @@ Instead of <s>`ViewPager mPager`</s> use <kbd>AutoNotifyViewPager mPager</kbd>
  [1]: http://developer.android.com/reference/android/support/v4/view/ViewPager.html "android.support.v4.view.ViewPager"
  [2]: http://developer.android.com/reference/android/support/v4/view/ViewPager.html#setAdapter%28android.support.v4.view.PagerAdapter%29
  [3]: https://play.google.com/store/apps/details?id=com.MobiGyaan "MobiGyaan"
- [4]: https://github.com/VenomVendor/AutoNotifyViewPager/tree/master/library "Import"
- [5]: https://github.com/VenomVendor/AutoNotifyViewPager/tree/master/library/bin "any one"
- [6]: https://www.google.com/search?q=the+application's+pageradapter+changed "IllegalStateException"
+ [4]: https://github.com/VenomVendor/AutoNotifyViewPager/releases/tag/v-3.0.0 "Import any one"
+ [5]: https://www.google.com/search?q=the+application's+pageradapter+changed "IllegalStateException"
