@@ -2,7 +2,7 @@
 
 This project is an upgraded version of [ViewPager][1]. AutoNotifies your adapter when data get's changed.
 
-##Prerequisites
+## Prerequisites
  - [android-support-v4.jar](#prerequisites)
 
 
@@ -51,7 +51,7 @@ Instead of <s>`ViewPager mPager`</s> use <kbd>AutoNotifyViewPager mPager</kbd>
 
 ###### Author : [VenomVendor](https://www.google.com/#newwindow=1&q=VenomVendor "Find me on Google")
 
-#License
+# License
 	Copyright (C) 2015 VenomVendor <info@VenomVendor.com>
 	Copyright (C) 2011 The Android Open Source Project.
 
